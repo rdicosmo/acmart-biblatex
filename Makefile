@@ -5,7 +5,7 @@ all: $(PDFS) main-bibtex.pdf
 
 main-bibtex.pdf: main-bibtex.tex
 	pdflatex $<
-	bibtex $<
+	bibtex main-bibtex
 	pdflatex $<
 	pdflatex $<
 
