@@ -16,3 +16,9 @@
 
 \DeclareDatamodelFields[type=field, datatype=literal]{key}
 \DeclareDatamodelEntryfields{key}
+
+%
+% include software data model from biblatex-software
+%
+
+\blx@inputonce{software.dbx}{biblatex data model extension for software}{}{}{}{}

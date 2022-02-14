@@ -36,7 +36,6 @@
 
 %% Bibliography style
 \RequirePackage[
-  datamodel=software, % extend the datamodel with entries for software
   abbreviate=true,
   dateabbrev=true,
   isbn=true,
@@ -49,21 +48,12 @@
   backend=biber,
   natbib=true,
   style=acmauthoryear,
-  language=american]{biblatex}
-%% Citation style
-%
-% load the software biblatex style
-%
-\usepackage{software-biblatex}
-%
-% set software specific bibliography options
-%
-\ExecuteBibliographyOptions{
   halid=true,
   swhid=true,
   swlabels=true,
   vcs=true,
-  license=false}
+  license=false,
+  language=american]{biblatex}
 
 \addbibresource{bib.bib}
 \addbibresource{sample-base.bib}
