@@ -1,5 +1,10 @@
 \ProvidesFile{acmauthoryear.cbx}[2022-02-14 v0.1]
 
-\RequireCitationStyle{authoryear}
+\RequireCitationStyle{ext-authoryear}
+
+%%%
+\DeclareOuterCiteDelims{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclareOuterCiteDelims{parencite}{\bibopenbracket}{\bibclosebracket}
+\DeclareOuterCiteDelims{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \endinput

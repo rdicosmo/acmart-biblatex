@@ -1,14 +1,13 @@
 \ProvidesFile{acmauthoryear.bbx}[2022-02-14 v0.1 biblatex bibliography style]
 
 % Inherit a default style
-\RequireBibliographyStyle{authoryear}
+\RequireBibliographyStyle{ext-authoryear}
 
 %%% New command definitions from trad-standard.bbx
 
 \newcommand*{\newcommaunit}{\@ifstar\newcommaunitStar\newcommaunitNoStar}
 \newcommand*{\newcommaunitStar}{\setunit*{\addcomma\space}}
 \newcommand*{\newcommaunitNoStar}{\setunit{\addcomma\space}}
-
 
 %%% Localisation strings for ACM
 
@@ -831,5 +830,6 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
+
 
 
