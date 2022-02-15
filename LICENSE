@@ -1,0 +1,12 @@
+The biblatex bibliographic styles included in this repository are 
+courtesy of Roberto Di Cosmo (roberto@dicosmo.org), based on
+the ACM-Reference-Format.{bbx,cbx,dbx} files contributed to acmart
+by Daniel Thomas (https://personal.cis.strath.ac.uk/d.thomas/).
+
+No licensing information being explicit for the base files, the licensing status
+of this work is not yet clear, but the end goal is to make it possible to
+distribute and/or modify it under the conditions of the LaTeX Project Public
+License, either version 1.3 of this license or (at your option) any later
+version.
+
+This information will be updated as soon as possible.
