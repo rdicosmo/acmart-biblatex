@@ -836,6 +836,17 @@
 \blx@inputonce{software.bbx}{biblatex style for software}{}{}{}{}
 
 %
-% Add alias for ACM specific ArtifactSoftware entry
+% Handle ACM specific ArtifactSoftware entry exactly as the software entry (a soft alias will not work)
 %
-\DeclareBibliographyAlias{artifactsoftware}{software}
+\DeclareStyleSourcemap{
+  \maps[datatype=bibtex]{
+   \map{
+     \step[typesource=artifactsoftware,typetarget=software]
+   }
+  }
+}     
+
+%
+% Show given name first in the reference list
+%
+\DeclareNameAlias{sortname}{given-family}
