@@ -827,4 +827,12 @@
     {}%
   \usebibmacro{finentry}}
 
+%
+% Include support for software entries
+%
+\blx@inputonce{software.bbx}{biblatex style for software}{}{}{}{}
 
+%
+% Add alias for ACM specific ArtifactSoftware entry
+%
+\DeclareBibliographyAlias{artifactsoftware}{software}
