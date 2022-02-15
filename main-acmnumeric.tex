@@ -47,7 +47,8 @@
   backref=false,
   backend=biber,
   natbib=true,
-  style=acmnumeric,
+  style=acmnumeric, % Note: use acmauthoryear for author/year citations
+                    % this is required for papers published as an issue of PACMPL
   sorting=nty,
   halid=true,
   swhid=true,
@@ -58,10 +59,6 @@
 
 \addbibresource{bib.bib}
 \addbibresource{sample-base.bib}
-
-%% Note: author/year citations are required for papers published as an
-%% issue of PACMPL.
-% \citestyle{acmauthoryear}   %% For author/year citations
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
