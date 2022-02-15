@@ -17,6 +17,11 @@
 \DeclareDatamodelFields[type=field, datatype=literal]{key}
 \DeclareDatamodelEntryfields{key}
 
+% Teach biblatex about lastaccessed field
+\DeclareDatamodelFields[type=field,datatype=literal]{lastaccessed}
+\DeclareDatamodelEntryfields{lastaccessed}
+
+
 %
 % include software data model from biblatex-software
 %
