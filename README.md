@@ -11,6 +11,11 @@ The bibliography style files are the following:
 - acmnumeric.*             : biblatex support based on the one shipped with acmart, where it is called ACM-Reference-Format.{bbx,cbx,dbx}, and only supports numeric citation style.
 - acmauthoryear.*          : biblatex support for authoryear citation style
 
+### Support files
+
+The software.* and the *.lbx files are part of the biblatex-software package.
+The are needed only if you do not have a recent TeXLive distribution.
+
 ### Test files
 In order to test the biblatex implementations, comparing with the bibtex one, the following files are included:
 
