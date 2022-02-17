@@ -56,69 +56,6 @@
     {}}
 \renewbibmacro*{url}{\iffieldundef{url}{\printlist{urls}}{\printfield{url}}}
 
-%%% Remove date from basic macros: it seems we want to handle it ourselves
-
-\renewbibmacro*{author}{%
-  \ifboolexpr{
-    test \ifuseauthor
-    and
-    not test {\ifnameundef{author}}
-  }
-    {\usebibmacro{bbx:dashcheck}
-       {\bibnamedash}
-       {\usebibmacro{bbx:savehash}%
-        \printnames{author}%
-        \iffieldundef{authortype}
-          {\setunit{\printdelim{nameyeardelim}}}
-          {\setunit{\printdelim{authortypedelim}}}}%
-     \iffieldundef{authortype}
-       {}
-       {\usebibmacro{authorstrg}%
-        \setunit{\printdelim{nameyeardelim}}}}%
-    {\global\undef\bbx@lasthash
-     \usebibmacro{labeltitle}%
-     \setunit*{\printdelim{nonameyeardelim}}}%
-}
-
-\newbibmacro*{bbx:editor}[1]{%
-  \ifboolexpr{
-    test \ifuseeditor
-    and
-    not test {\ifnameundef{editor}}
-  }
-    {\usebibmacro{bbx:dashcheck}
-       {\bibnamedash}
-       {\printnames{editor}%
-        \setunit{\printdelim{editortypedelim}}%
-        \usebibmacro{bbx:savehash}}%
-     \usebibmacro{#1}%
-     \clearname{editor}%
-     \setunit{\printdelim{nameyeardelim}}}%
-    {\global\undef\bbx@lasthash
-     \usebibmacro{labeltitle}%
-     \setunit*{\printdelim{nonameyeardelim}}}%
-}
-
-\newbibmacro*{bbx:translator}[1]{%
-  \ifboolexpr{
-    test \ifusetranslator
-    and
-    not test {\ifnameundef{translator}}
-  }
-    {\usebibmacro{bbx:dashcheck}
-       {\bibnamedash}
-       {\printnames{translator}%
-        \setunit{\printdelim{translatortypedelim}}%
-        \usebibmacro{bbx:savehash}}%
-     \usebibmacro{#1}%
-     \clearname{translator}%
-     \setunit{\printdelim{nameyeardelim}}}%
-    {\global\undef\bbx@lasthash
-     \usebibmacro{labeltitle}%
-     \setunit*{\printdelim{nonameyeardelim}}}%
-}
-
-
 %%% Bibmacro definitions
 
 \renewbibmacro*{translator+others}{%
@@ -359,8 +296,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock%
-  \usebibmacro{year}%
-  \newunit%
   \usebibmacro{title}%
   \newunit%
   \printlist{language}%
@@ -397,8 +332,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}%
-  \newunit%
   \usebibmacro{maintitle+title}%
   \newunit%
   \printlist{language}%
@@ -451,8 +384,6 @@
     {\usebibmacro{byeditor+others}}%
     {\usebibmacro{author/translator+others}}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit\newblock
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -507,8 +438,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit\newblock
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -560,8 +489,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit\newblock
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -613,8 +540,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit\newblock
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -664,8 +589,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit\newblock
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -702,8 +625,6 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
-  \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
   \newunit
@@ -746,8 +667,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}%
-  \newunit
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -788,8 +707,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{editor}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit
   \usebibmacro{title+issuetitle}%
   \newunit
   \printlist{language}%
@@ -821,8 +738,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -866,8 +781,6 @@
   \usebibmacro{begentry}%
   \usebibmacro{author}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{year}
-  \newunit
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -917,6 +830,9 @@
   }
 }     
 
+%%% Compatibility with ACM bibtex formatting
+
+
 %
 % Show given name first in the reference list
 %
@@ -928,7 +844,19 @@
 \renewcommand*{\bibfont}{\bibliofont\footnotesize}
 
 %
-% Establish some defaults for ACM style compatibility
+% Remove parentheses from date+extradate
+%
+\RequirePackage{xpatch}
+\xpatchbibmacro{date+extradate}{%
+  \printtext[parens]%
+}{%
+  \newblock\setunit*{.\space}%
+  \printtext%
+}{}{} 
+
+
+%
+% Do not use dashes for bibliography items with the same set of authors
 %
 
 \ExecuteBibliographyOptions{dashed=false}
