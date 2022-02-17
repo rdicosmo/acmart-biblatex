@@ -14,7 +14,7 @@ The bibliography style files are the following:
 ### Support files
 
 The software.* and the *.lbx files are part of the biblatex-software package.
-The are needed only if you do not have a recent TeXLive distribution.
+They are needed only if you do not have a recent TeXLive distribution.
 
 ### Test files
 In order to test the biblatex implementations, comparing with the bibtex one, the following files are included:
