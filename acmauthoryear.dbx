@@ -21,6 +21,10 @@
 \DeclareDatamodelFields[type=field,datatype=literal]{lastaccessed}
 \DeclareDatamodelEntryfields{lastaccessed}
 
+% Teach biblatex about distincturl field
+\DeclareDatamodelFields[type=field, datatype=literal]{distinctURL}
+\DeclareDatamodelEntryfields{distinctURL}
+
 
 %
 % include software data model from biblatex-software

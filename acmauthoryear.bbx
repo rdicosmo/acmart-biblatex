@@ -333,8 +333,13 @@
 
 \renewbibmacro*{doi+eprint+url}{%
   \iftoggle{bbx:url}
-    {\iffieldundef{doi}{\usebibmacro{url+urldate}}{}}
-    {}%
+    {\iffieldundef{doi}{
+      \usebibmacro{url+urldate}
+      }{\iffieldundef{distinctURL}
+      {}
+      {\usebibmacro{url+urldate}}
+      }
+    }%
   \newunit\newblock
   \iftoggle{bbx:eprint}
     {\usebibmacro{eprint}}
