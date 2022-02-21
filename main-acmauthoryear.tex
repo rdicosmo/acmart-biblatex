@@ -36,25 +36,10 @@
 
 %% Bibliography style
 \RequirePackage[
-  abbreviate=true,
-  dateabbrev=true,
-  isbn=true,
-  doi=true,
-  urldate=comp,
-  url=true,
-  maxbibnames=9,
-  maxcitenames=2,
-  backref=false,
+  style=acmauthoryear, %% Note: this is required for papers published as an issue of PACMPL
   backend=biber,
   natbib=true,
-  style=acmauthoryear, %% Note: this is required for papers published as an issue of PACMPL
-  sorting=nty,
-  halid=true,
-  swhid=true,
-  swlabels=true,
-  vcs=true,
-  license=false,
-  language=american]{biblatex}
+]{biblatex}
 
 \addbibresource{bib.bib}
 \addbibresource{sample-base.bib}

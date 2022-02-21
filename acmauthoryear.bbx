@@ -857,8 +857,25 @@
 }{}{} 
 
 
-%
-% Do not use dashes for bibliography items with the same set of authors
-%
+%%% Set option values for ACM style
 
-\ExecuteBibliographyOptions{dashed=false,datelabel=year}
+\ExecuteBibliographyOptions{
+  dashed=false,     % Do not use dashes for bibliography items with the same set of authors
+  labeldate=year,
+  abbreviate=true,
+  dateabbrev=true,
+  isbn=true,
+  doi=true,
+  urldate=comp,
+  url=true,
+  maxbibnames=9,
+  maxcitenames=2,
+  backref=false,
+  sorting=nty,
+  halid=true,
+  swhid=true,
+  swlabels=true,
+  vcs=true,
+  license=false,
+  language=american
+  }

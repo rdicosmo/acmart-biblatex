@@ -861,3 +861,25 @@
 % Produce a bibliography with small font size
 %
 \renewcommand*{\bibfont}{\bibliofont\footnotesize}
+
+%%% Set option values for ACM style
+
+\ExecuteBibliographyOptions{
+  labeldate=year,
+  abbreviate=true,
+  dateabbrev=true,
+  isbn=true,
+  doi=true,
+  urldate=comp,
+  url=true,
+  maxbibnames=9,
+  maxcitenames=2,
+  backref=false,
+  sorting=nty,
+  halid=true,
+  swhid=true,
+  swlabels=true,
+  vcs=true,
+  license=false,
+  language=american
+  }
