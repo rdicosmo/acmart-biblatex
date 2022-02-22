@@ -2,6 +2,75 @@
 
 \RequireCitationStyle{authoryear}
 
+% From https://tex.stackexchange.com/a/537666/133551
+\renewbibmacro*{cite}{%
+  \printtext[bibhyperref]{%
+    \iffieldundef{shorthand}
+      {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+         {\usebibmacro{cite:label}%
+          \setunit{\printdelim{nonameyeardelim}}}
+         {\printnames{labelname}%
+          \setunit{\printdelim{nameyeardelim}}}%
+       \usebibmacro{cite:labeldate+extradate}}
+      {\usebibmacro{cite:shorthand}}}}
+
+\renewbibmacro*{citeyear}{%
+  \printtext[bibhyperref]{%
+    \iffieldundef{shorthand}
+      {\iffieldundef{labelyear}
+         {\usebibmacro{cite:label}}
+         {\usebibmacro{cite:labeldate+extradate}}}
+      {\usebibmacro{cite:shorthand}}}}
+
+\renewbibmacro*{textcite}{%
+  \ifnameundef{labelname}
+    {\iffieldundef{shorthand}
+       {\printtext[bibhyperref]{%
+          \usebibmacro{cite:label}}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nonameyeardelim}\bibopenbracket}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \printtext[bibhyperref]{\usebibmacro{cite:labeldate+extradate}}}
+       {\printtext[bibhyperref]{\usebibmacro{cite:shorthand}}}}
+    {\printtext[bibhyperref]{\printnames{labelname}}%
+     \setunit{%
+       \global\booltrue{cbx:parens}%
+       \printdelim{nameyeardelim}\bibopenbracket}%
+     \ifnumequal{\value{citecount}}{1}
+       {\usebibmacro{prenote}}
+       {}%
+     \usebibmacro{citeyear}}}
+
+\renewbibmacro*{cite:shorthand}{%
+  \printfield{shorthand}}
+
+\renewbibmacro*{cite:label}{%
+  \iffieldundef{label}
+    {\printfield[citetitle]{labeltitle}}
+    {\printfield{label}}}
+
+\renewbibmacro*{cite:labeldate+extradate}{%
+  \printlabeldateextra}
+
+% NEW
+\newbibmacro*{citeauthor}{%
+  \ifnameundef{labelname}
+    {\iffieldundef{shorthand}
+      {\printtext[bibhyperref]{%
+          \usebibmacro{cite:label}}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nonameyeardelim}\bibopenbracket}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \printtext[bibhyperref]{\usebibmacro{cite:labeldate+extradate}}}
+      {\printtext[bibhyperref]{\usebibmacro{cite:shorthand}}}}
+    \printtext[bibhyperref]{\printnames{labelname}}}
+
 %
 % Put brackets around citations
 %
@@ -69,5 +138,26 @@
   {\usebibmacro{textcite:postnote}}
 
 \DeclareMultiCiteCommand{\textcites}{\textcite}{}
+
+\DeclareCiteCommand{\citeauthor}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citeauthor}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeyear}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citeyear}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeyearpar}[\mkbibbrackets]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citeyear}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
 
 \endinput
