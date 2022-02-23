@@ -2,6 +2,9 @@
 
 \RequireCitationStyle{authoryear}
 
+%
+% Hyperlink citations like acmart natbib implementation
+%
 % From https://tex.stackexchange.com/a/537666/133551
 \renewbibmacro*{cite}{%
   \printtext[bibhyperref]{%
@@ -159,5 +162,12 @@
    \usebibmacro{citeyear}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+
+%
+% Provide aliases for natbib-compatible commands
+%
+\newcommand*{\citep}{\parencite}
+\newcommand*{\citet}{\textcite}
+% add others here
 
 \endinput
