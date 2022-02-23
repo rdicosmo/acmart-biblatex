@@ -1,7 +1,21 @@
 \ProvidesFile{acmauthoryear.cbx}[2022-02-14 v0.1]
 
-\RequireCitationStyle{authoryear}
+\RequireCitationStyle{ext-authoryear}
 
+%
+% Put brackets around citations
+%
+
+\DeclareOuterCiteDelims{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclareInnerCiteDelims{cite}{}{}
+\DeclareOuterCiteDelims{parencite}{\bibopenbracket}{\bibclosebracket}
+\DeclareInnerCiteDelims{parencite}{}{}
+\DeclareOuterCiteDelims{textcite}{}{}
+\DeclareInnerCiteDelims{textcite}{\bibopenbracket}{\bibclosebracket}
+
+%
+% Hyperlink citations like acmart natbib implementation
+%
 % From https://tex.stackexchange.com/a/537666/133551
 \renewbibmacro*{cite}{%
   \printtext[bibhyperref]{%
@@ -71,73 +85,6 @@
       {\printtext[bibhyperref]{\usebibmacro{cite:shorthand}}}}
     \printtext[bibhyperref]{\printnames{labelname}}}
 
-%
-% Put brackets around citations
-%
-
-\DeclareCiteCommand{\cite}[\mkbibbrackets]
-  {\usebibmacro{prenote}}%
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand*{\cite}[\mkbibbrackets]
-  {\usebibmacro{prenote}}%
-  {\usebibmacro{citeindex}%
-   \usebibmacro{citeyear}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\parencite}[\mkbibbrackets]
-  {\usebibmacro{prenote}}%
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand*{\parencite}[\mkbibbrackets]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{citeyear}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcite}[\mkbibfootnote]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkbibbrackets\mkbibfootnote]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\textcite}
-  {\boolfalse{cbx:parens}}
-  {\usebibmacro{citeindex}%
-   \iffirstcitekey
-     {\setcounter{textcitetotal}{1}}
-     {\stepcounter{textcitetotal}%
-      \textcitedelim}%
-   \usebibmacro{textcite}}
-  {\ifbool{cbx:parens}
-     {\bibcloseparen\global\boolfalse{cbx:parens}}
-     {}}
-  {\usebibmacro{textcite:postnote}}
-
-\DeclareMultiCiteCommand{\textcites}{\textcite}{}
 
 \DeclareCiteCommand{\citeauthor}
   {\usebibmacro{prenote}}
@@ -159,5 +106,12 @@
    \usebibmacro{citeyear}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+
+%
+% If we want to provide aliases for natbib-compatible commands
+%
+% \newcommand*{\citep}{\parencite}
+% \newcommand*{\citet}{\textcite}
+% others here
 
 \endinput

@@ -36,9 +36,9 @@
 
 %% Bibliography style
 \RequirePackage[
-  style=acmauthoryear, %% Note: this is required for papers published as an issue of PACMPL
+  style=acmauthoryear,
   backend=biber,
-  natbib=true,
+  natbib=false         % natbib must be disabled to retain style compatibility with acmart
 ]{biblatex}
 
 \addbibresource{bib.bib}
@@ -183,12 +183,48 @@ Test brackets:~\cite{gf-tag-sound-repo,ad-wood-2003}\\
 Test repeated items:~\cite{897367,Buss:1987:VTB:897367}\\
 Test brackets*:~\cite*{gf-tag-sound-repo,ad-wood-2003}\\
 Test repeated items*:~\cite*{897367,Buss:1987:VTB:897367}\\
-Test citep: ~\citep{ad-wood-2003}\\
 Test citeauthor: ~\citeauthor{ad-wood-2003}\\
 Test citeyear: ~\citeyear{ad-wood-2003}\\
 Test citeyearpar: ~\citeyearpar{ad-wood-2003}\\
 Test textcite: ~\textcite{ad-wood-2003}\\
 Test textcite multiple: ~\textcite{ad-wood-2003,897367,Buss:1987:VTB:897367}\\
+
+\subsubsection{More BibLaTeX Tests}
+
+From \url{https://tex.stackexchange.com/a/27615/133551}.
+
+Filler text \parencite{Knuth98}.
+Filler text \parencite{Lamport:LaTeX}. Filler text \parencite{Amsthm15}. \\
+Filler text \parencite[See][23]{Knuth98}.
+Filler text \parencite[1--10]{Lamport:LaTeX}. \\
+\textcite{knuth:texbook} and \textcite{Knuth97}.
+\textcite{Knuth98} and \textcite{knuth:texbook}. \\
+\textcite{Knuth98} and \textcite{Lamport:LaTeX} and \textcite{Amsthm15}. \\
+\textcite[e.g.][]{Knuth98} and \textcite[10]{Lamport:LaTeX}. \\
+Filler text.\footcite[23]{Knuth98} Filler text.\footcite[1--10]{Knuth97}
+Filler text.\footnote{\smartcite[10--15]{Goossens:1999:LWC:553897}}
+
+\textbf{Unqualified citation lists}
+
+\textcite{knuth:texbook,Knuth97,Knuth98,knuth:texbook} showed that... \\
+\textcite[e.g.][10--15]{Knuth98,Knuth97,Amsthm15} showed that...\\
+Filler text \parencite[See][for example]{Knuth98,Knuth97,Amsthm15}. \\
+Filler text \parencite[etc.]{knuth:texbook,Knuth97,Knuth98,knuth:texbook}.
+
+\textbf{Qualified citation lists}
+
+\textcites{Knuth98}{Knuth97} showed that...
+\textcites(See)(){Knuth98}[cf.][]{Knuth97}. \\
+\textcites(See)()[e.g.][15]{Knuth98}[cf.][10]{Knuth97} \\
+\parencites(See)()[10--15]{Knuth98}[cf.][10]{Knuth97} \\
+\parencites{knuth:texbook,Knuth97}[10--11]{Knuth98,knuth:texbook}
+
+\textbf{Mix of qualified and unqualified citation lists}
+
+\textcites(See)()[e.g.][]{Knuth98}[10]{JCohen96,Goossens:1999:LWC:553897} \\
+\textcites[e.g.][]{Knuth98,Knuth97}[10]{Goossens:1999:LWC:553897} \\
+\textcites[10]{Knuth98}{Knuth97}[cf.][]{JCohen96} \\
+\textcites[15]{Knuth98}[cf.][10]{JCohen96,Goossens:1999:LWC:553897}
 
 \input{samplebody}
 
