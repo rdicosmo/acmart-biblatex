@@ -74,6 +74,16 @@
       {\printtext[bibhyperref]{\usebibmacro{cite:shorthand}}}}
     \printtext[bibhyperref]{\printnames{labelname}}}
 
+\renewbibmacro*{textcite:postnote}{%
+  \iffieldundef{postnote}
+    {\ifbool{cbx:parens}
+       {\bibclosebracket}
+       {}}
+    {\ifbool{cbx:parens}
+       {\setunit{\printdelim{postnotedelim}}}
+       {\setunit{\printdelim{extpostnotedelim}\bibopenbracket}}%
+     \printfield{postnote}\bibclosebracket}}
+
 %
 % Put brackets around citations
 %
@@ -138,7 +148,7 @@
       \textcitedelim}%
    \usebibmacro{textcite}}
   {\ifbool{cbx:parens}
-     {\bibcloseparen\global\boolfalse{cbx:parens}}
+     {\bibclosebracket\global\boolfalse{cbx:parens}}
      {}}
   {\usebibmacro{textcite:postnote}}
 
