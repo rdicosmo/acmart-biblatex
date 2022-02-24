@@ -193,6 +193,8 @@ Test textcite multiple: ~\textcite{ad-wood-2003,897367,Buss:1987:VTB:897367}\\
 
 From \url{https://tex.stackexchange.com/a/27615/133551}.
 
+\textbf{Single citations}
+
 Filler text \parencite{Knuth98}.
 Filler text \parencite{Lamport:LaTeX}. Filler text \parencite{Amsthm15}. \\
 Filler text \parencite[See][23]{Knuth98}.
@@ -208,6 +210,9 @@ Filler text.\footnote{\smartcite[10--15]{Goossens:1999:LWC:553897}}
 
 \textcite{knuth:texbook,Knuth97,Knuth98,knuth:texbook} showed that... \\
 \textcite[e.g.][10--15]{Knuth98,Knuth97,Amsthm15} showed that...\\
+\textcite[e.g.][]{Knuth97,Knuth98} \\
+\textcite[10--15]{Knuth97,Knuth98} \\
+\parencite[See][for example]{Knuth97,Knuth98} \\
 Filler text \parencite[See][for example]{Knuth98,Knuth97,Amsthm15}. \\
 Filler text \parencite[etc.]{knuth:texbook,Knuth97,Knuth98,knuth:texbook}.
 
@@ -216,6 +221,9 @@ Filler text \parencite[etc.]{knuth:texbook,Knuth97,Knuth98,knuth:texbook}.
 \textcites{Knuth98}{Knuth97} showed that...
 \textcites(See)(){Knuth98}[cf.][]{Knuth97}. \\
 \textcites(See)()[e.g.][15]{Knuth98}[cf.][10]{Knuth97} \\
+\textcites(See)()[10]{Knuth98}[10]{Knuth97} \\
+\textcites(See)()[10--15]{Knuth98}[cf.][10]{Knuth97} \\
+\textcites(See)()[e.g.][10--15]{Knuth98}[cf.][10]{Knuth97} \\
 \parencites(See)()[10--15]{Knuth98}[cf.][10]{Knuth97} \\
 \parencites{knuth:texbook,Knuth97}[10--11]{Knuth98,knuth:texbook}
 
