@@ -9,9 +9,10 @@
 \newcommand*{\newcommaunitStar}{\setunit*{\addcomma\space}}
 \newcommand*{\newcommaunitNoStar}{\setunit{\addcomma\space}}
 
+%%% For really really old biblatex
 %%% Forward compatibility for date+extradate
 
-\ifbibmacroundef{date+extradate}{
+\ifcsundef{abx@macro@date+extradate}{
   \blx@warning{bibmacro 'date+extradate' is missing.\MessageBreak
     Please consider updating your version of biblatex.\MessageBreak
     Using 'date+extrayear' instead}%
