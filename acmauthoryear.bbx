@@ -9,15 +9,24 @@
 \newcommand*{\newcommaunitStar}{\setunit*{\addcomma\space}}
 \newcommand*{\newcommaunitNoStar}{\setunit{\addcomma\space}}
 
-%%% For really really old biblatex
 %%% Forward compatibility for date+extradate
 
-\ifcsundef{abx@macro@date+extradate}{
-  \blx@warning{bibmacro 'date+extradate' is missing.\MessageBreak
-    Please consider updating your version of biblatex.\MessageBreak
-    Using 'date+extrayear' instead}%
-  \providebibmacro*{date+extradate}{\usebibmacro{date+extrayear}}
-}{}
+\ifcsundef{ifbibmacroundef}{
+  \ifcsundef{abx@macro@date+extradate}{ %%% For really really old biblatex that miss \ifbibmacroundef
+    \blx@warning{bibmacro 'date+extradate' is missing.\MessageBreak
+      Please consider updating your version of biblatex.\MessageBreak
+      Using 'date+extrayear' instead}%
+    \providebibmacro*{date+extradate}{\usebibmacro{date+extrayear}}
+    }{}
+  }
+  {
+  \ifbibmacroundef{date+extradate}{
+    \blx@warning{bibmacro 'date+extradate' is missing.\MessageBreak
+      Please consider updating your version of biblatex.\MessageBreak
+      Using 'date+extrayear' instead}%
+    \providebibmacro*{date+extradate}{\usebibmacro{date+extrayear}}
+    }{}  
+  }
 
 %%% Localisation strings for ACM
 
