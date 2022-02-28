@@ -1,7 +1,7 @@
 \ProvidesFile{acmauthoryear.bbx}[2022-02-14 v0.1 biblatex bibliography style]
 
 % Inherit a default style
-\RequireBibliographyStyle{authoryear}
+\RequireBibliographyStyle{authoryear-comp}
 
 %%% New command definitions from trad-standard.bbx
 
@@ -25,7 +25,7 @@
       Please consider updating your version of biblatex.\MessageBreak
       Using 'date+extrayear' instead}%
     \providebibmacro*{date+extradate}{\usebibmacro{date+extrayear}}
-    }{}  
+    }{}
   }
 
 %%% Localisation strings for ACM
@@ -849,7 +849,7 @@
      \step[typesource=artifactdataset,typetarget=dataset]
    }
   }
-}     
+}
 
 %%% Compatibility with ACM bibtex formatting
 
@@ -873,7 +873,7 @@
 }{%
   \newblock\setunit*{.\space}%
   \printtext%
-}{}{} 
+}{}{}
 
 
 %%% Set option values for ACM style
