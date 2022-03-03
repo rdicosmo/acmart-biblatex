@@ -17,6 +17,7 @@
   hal_id,
   hal_version,
   swhid,
+  swhidcore,
 }
 
 %

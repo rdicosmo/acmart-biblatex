@@ -1,15 +1,17 @@
+\ProvidesFile{software.bbx}[2020/04/02 bibliography driver extension for software entries, Roberto Di Cosmo]
 %
 % Reference implementation of a BibLaTeX style for the software family of bibliographic entries
 %
 % 2020/04/02 Roberto Di Cosmo <roberto@dicosmo.org>
 %
-%\RequireBiber[3]
-%\RequirePackage{xurl}
+\RequireBiber[3]
+\RequirePackage{xurl}
 %
 % Toggles for typesetting additional ids and printing labels
 %
 \newtoggle{bbx:halid}
 \newtoggle{bbx:swhid}
+\newtoggle{bbx:shortswhid}
 \newtoggle{bbx:vcs}
 \newtoggle{bbx:swlabels}
 \newtoggle{bbx:license}
@@ -18,6 +20,8 @@
   \settoggle{bbx:halid}{#1}}
 \DeclareBibliographyOption[boolean]{swhid}[true]{%
   \settoggle{bbx:swhid}{#1}}
+\DeclareBibliographyOption[boolean]{shortswhid}[false]{%
+  \settoggle{bbx:shortswhid}{#1}}
 \DeclareBibliographyOption[boolean]{swlabels}[true]{%
   \settoggle{bbx:swlabels}{#1}}
 \DeclareBibliographyOption[boolean]{vcs}[true]{%
@@ -25,7 +29,7 @@
 \DeclareBibliographyOption[boolean]{license}[true]{%
   \settoggle{bbx:license}{#1}}
 
-\ExecuteBibliographyOptions{halid,swhid,swlabels,vcs,license}
+\ExecuteBibliographyOptions{halid,swhid,shortswhid,swlabels,vcs,license}
 
 %
 % Declare inheritance rules (valid only in LaTeX preamble!)
@@ -58,12 +62,17 @@
      \usebibmacro{urldate}}}
 
 %
-% Support multiline SWHIDs
+% Support multiline SWHIDs and create swhidcore field from swhid if missing
 %
 \DeclareStyleSourcemap{
   \maps[datatype=bibtex,overwrite=true]{
     \map{
       \step[fieldsource=swhid, match=\regexp{\s}, replace={}]
+    }
+    \map{
+      \step[fieldsource=swhid]
+      \step[fieldset=swhidcore, origfieldval]
+      \step[fieldsource=swhidcore, match=\regexp{;.*}, replace={}]
     }
   }
 }
@@ -91,8 +100,12 @@
   \iftoggle{bbx:swhid}%
            {\mkbibacro{SWHID}\addcolon\addspace%
              \ifhyperref%
-                 {\href{http://archive.softwareheritage.org/#1}{\(\langle\)\nolinkurl{#1}\(\rangle\)}}%
-                 {\(\langle\)\nolinkurl{#1}\(\rangle\)}%
+                 {\href{http://archive.softwareheritage.org/#1}{\(\langle\)\nolinkurl{%
+  		    \iftoggle{bbx:shortswhid}{\thefield{swhidcore}}{#1}%
+		    }\(\rangle\)}}%
+                 {\(\langle\)\nolinkurl{%
+  		    \iftoggle{bbx:shortswhid}{\thefield{swhidcore}}{#1}%
+		    }\(\rangle\)}%
            }%
            {}%
 }
